@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './../../modular/arithmetic.rb'
+require_relative './../../../modular/arithmetic.rb'
 
 # shamir user
 class ShamirUser

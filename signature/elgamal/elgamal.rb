@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './../../cipher/elgamal/elgamal_user.rb'
+require_relative './../../cipher/elgamal/srcelgamal_user.rb'
 require 'digest'
 
 # sender

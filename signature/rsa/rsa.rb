@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './../../cipher/rsa/rsa_user.rb'
+require_relative './../../cipher/rsa/src/rsa_user.rb'
 require 'digest'
 
 # sender

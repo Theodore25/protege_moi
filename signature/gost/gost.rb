@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './../../cipher/elgamal/elgamal_user.rb'
+require_relative './../../cipher/elgamal/src/elgamal_user.rb'
 require 'digest'
 
 def public_pq

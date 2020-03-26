@@ -1,0 +1,32 @@
+#!/usr/bin/ruby
+
+# frozen_string_literal: true
+
+require_relative './src/rsa_file_encoder.rb'
+require_relative './src/rsa_file_decoder.rb'
+
+require 'optparse'
+
+options = {}
+OptionParser.new do |opt|
+  opt.banner = 'Usage: ./elgamal [options]'
+  opt.on('-m MODE', '--mode MODE', 'MODE = e|d') { |m| options[:mode] = m }
+  opt.on('-i FILE', '--input-file FILE') { |file| options[:input] = file }
+  opt.on('-o FILE', '--output-file FILE') { |file| options[:output] = file }
+end.parse!
+
+exit if !options.values_at(:input, :output).all?
+
+if options[:mode] == 'e'
+  encoder = RSAFileEncoder.new(options[:input], options[:output])
+  encoder.encode_file('.alice.zombie', '.bob.zombie')
+elsif options[:mode] == 'd'
+  alice = Marshal.load(File.read('.alice.zombie'))
+  bob = Marshal.load(File.read('.bob.zombie'))
+
+  decoder = RSAFileDecoder.new(options[:input], options[:output])
+  decoder.decode_file(alice, bob)
+else
+  puts('exit: syntax error')
+  exit
+end
